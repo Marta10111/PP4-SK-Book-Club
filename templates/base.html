@@ -23,9 +23,9 @@
 
 <body>
     <!-- Navigation -->
-     <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Stephen King Book Club</a>
+            <a class="navbar-brand" href="#">Location Blog</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,10 +35,17 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
-                    {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Posts</a>
+                    </li>
+                    {% if user.is_authenticated %} 
+                    <li class="nav-link">
+                        <a class="nav-link" href="{% url 'post_create' %}">Create Post</a>
+                    </li>
+                    <li class="nav-link">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
+                    <p>{{ request.user }} is currently logged in</p>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
@@ -46,12 +53,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
-                    {% endif %}
-
+                    {% endif %} 
                 </ul>
-                <span class="navbar-text text-muted">
-                   
-                </span>
             </div>
         </div>
     </nav>
@@ -60,15 +63,7 @@
         <!-- Content Goes here -->
         {% endblock content %}
     </main>
-
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
         <p class="m-0 text-center text-black">Follow us: <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i></p>
-    </footer>
-
-</body>
-
-</html>

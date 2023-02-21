@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
+from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from .models import Post
 from .forms import CommentForm
 
@@ -110,3 +112,14 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'location', 'content', 'featured_image', 'excerpt']
+    template_name = 'post_create.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(PostCreate, self).form_valid(form)
