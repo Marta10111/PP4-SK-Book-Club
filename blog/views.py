@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import Post
@@ -100,3 +100,9 @@ class PostEdit(UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(PostEdit, self).form_valid(form)
+
+
+class PostDelete(DeleteView):
+    model = Post()
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('home') 
