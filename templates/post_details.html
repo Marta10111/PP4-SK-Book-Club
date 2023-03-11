@@ -7,13 +7,13 @@
             <div class="col-md-6 masthead-text">
                 <h1 class="post-title">{{ post.title }}</h1>
                 <h5 class="post-title">{{ post.location }}</h5>
-                <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
+                <p class="post-subtitle"><span class="posting-name">{{ post.author }}</span> | {{ post.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="https://static01.nyt.com/newsgraphics/2020/04/28/stephen-king-guide/assets/images/petsematary-2000.jpg" width="100%">
+                <img src="https://static01.nyt.com/newsgraphics/2020/04/28/stephen-king-guide/assets/images/petsematary-2000.jpg" alt="Image of IT bookcover" width="100%">
                 {% else %}
-                <img src=" {{ post.featured_image.url }}" width="100%">
+                <img class="detail-img" src=" {{ post.featured_image.url }}" alt="{{ post.title }}" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -78,7 +78,7 @@
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        {{ comment.name }}
+                        <span class="posting-name">{{ comment.name }}</span>
                         <span class=" text-muted font-weight-normal">
                             {{ comment.created_on }}
                         </span> wrote:
@@ -90,7 +90,15 @@
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
+                {% if user.is_authenticated %} 
+                <h3>Leave a comment:</h3>
+                <p>Posting as <span class="posting-name">{{ user.username }}</span></p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %} 
+                    <button type="submit" class="btn btn-outline-dark btn-lg">Submit</button>
+                </form>
+                {% endif %}
             </div>
         </div>
     </div>

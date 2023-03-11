@@ -45,7 +45,6 @@
                     <li class="nav-item">
                         <a class="nav-link {% if '/accounts/logout/' in request.path %}active{% endif %}" href="{% url 'account_logout' %}">Logout</a>
                     </li>
-                    <p>{{ request.user }} is currently logged in</p>
                     <p class="nav-login">{{ request.user }} is currently logged in</p>
                     {% else %}
                     <li class="nav-item">

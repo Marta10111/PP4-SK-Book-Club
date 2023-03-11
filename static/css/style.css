@@ -150,14 +150,24 @@ a.nav-link.active {
     transform: skew(15deg);
     z-index: 100;
 }
+
+.detail-img {
+    object-position: center center;
+}
+
 .post-title {
-    margin-top: 20%;
+    margin-top: 15%;
     margin-left: 5%;
+    text-transform: uppercase;
 }
 
 .post-subtitle {
     margin-left: 5%;
     color: lightgray;
+}
+
+.posting-name {
+    text-transform: uppercase;
 }
 
 .btn-like {
