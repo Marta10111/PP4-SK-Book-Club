@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <hr>
+            <h1>View Profile</h1>
+            <hr>
+            <h2>{{ user.username|title }}'s Profile</h2>
+            <div class="card">
+                {% if "placeholder" in profile.profile_image.url %}
+                <img src="{% static 'images/no_user_image.png' %}" alt="No photo available image" class="card-img-top">
+                {% else %}
+                <img src=" {{ profile.profile_image.url }}" alt="user's profile image" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <p>Favourite Place:{{ profile.favourite_place }}</p>
+                    <a href="{% url 'home' %}" role="button" class="btn btn-lg btn-outline-dark btn-post">Home</a>
+                    <a href="{% url 'profile_edit' %}" role="button" class="btn btn-lg btn-outline-dark btn-post">Edit
+                        Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

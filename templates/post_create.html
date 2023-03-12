@@ -1,7 +1,7 @@
 {% extends "base.html" %} 
 
 {% block content %} 
-{% load crispy_forms_tags %}
+
 
 <div class="container">
     <div class="row">
@@ -10,7 +10,7 @@
             <form method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}
                 {% csrf_token %} 
-                <input type="submit" value="Create" class="btn btn-lg">
+                <input type="submit" value="Create" class="btn btn-lg btn-outline-dark">
             </form>
         </div>
     </div>

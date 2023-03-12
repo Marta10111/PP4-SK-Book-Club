@@ -3,21 +3,21 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-{% block content %}
 
 <div class="masthead">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="post-title">{{ post.title }}</h1>
-                <h5 class="post-title">{{ post.location }}</h5>
-                <p class="post-subtitle"><span class="posting-name">{{ post.author }}</span> | {{ post.created_on }}</p>
+                <h3 class="post-title">{{ post.location }}</h3>
+                <p class="post-subtitle"><span class="posting-name">{{ post.author }}</span> | {{ post.created_on|date }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in post.featured_image.url %}
-                <img class="detail-img" src="{% static 'images/pennywise.jpg' %}" alt="Image of IT bookcover">
+                <img class="detail-img" src="{% static 'images/stock.jpg' %}"
+                    alt="Image of clifftop overlooking the sea">
                 {% else %}
-                <img class="detail-img" src=" {{ post.featured_image.url }}" alt="{{ post.title }}" width="100%">
+                <img class="detail-img" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
                 {% endif %}
             </div>
         </div>
@@ -27,9 +27,7 @@
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
-                <p class="card-text ">
-                    {{ post.content | safe }}
-                </p>
+                <p class="card-text">{{ post.content | safe }}</p>
                 <div class="row">
 
                     <div class="col-1">
@@ -38,13 +36,15 @@
                             {% csrf_token %}
                             {% if liked %}
 
-                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}"
+                                class="btn-like" aria-label="like post">
                                 <i class="fas fa-heart"></i>
                             </button>
 
                             {% else %}
 
-                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}"
+                                class="btn-like" aria-label="like post">
                                 <i class="far fa-heart"></i>
                             </button>
 
@@ -56,7 +56,6 @@
 
                         {% endif %}
                         <span class="text-secondary"> {{ post.number_of_likes }}</span>
-                        </strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
@@ -67,6 +66,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <a href="{% url 'post_list' %}" role="button" class="btn btn-lg btn-outline-dark btn-post">Back to Posts</a>
     </div>
     <div class="row">
         <div class="col">
@@ -82,13 +84,14 @@
                     <p class="font-weight-bold">
                         <span class="posting-name">{{ comment.name }}</span>
                         <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on }}
+                            {{ comment.created_on|date }}
                         </span> wrote:
                     </p>
                     {{ comment.body | linebreaks }}
                 </div>
                 {% endfor %}
             </div>
+
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
@@ -105,4 +108,5 @@
         </div>
     </div>
 </div>
+
 {% endblock content %}

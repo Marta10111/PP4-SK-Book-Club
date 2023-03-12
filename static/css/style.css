@@ -1,5 +1,5 @@
 body {
-    background-color: #f9fafc
+    background-image: url(https://res.cloudinary.com/dzjocfnqw/image/upload/v1678628686/pexels-zachary-debottis-2953863_kdhjba.jpg);
 }
 
 p {
@@ -18,11 +18,11 @@ h5 {
 
 .navbar {
     background-color: #042960;
-    color: white;
+    color: rgb(150, 4, 4);
 }
 
 .navbar-brand {
-    color: white;
+    color: rgb(114, 4, 4);
     font-family: 'Cedarville Cursive', cursive;
 }
 

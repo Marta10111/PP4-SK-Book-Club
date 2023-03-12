@@ -89,7 +89,7 @@ class PostLike(View):
 
 class PostCreate(CreateView):
     model = Post
-    fields = ['title', 'content', 'featured_image',]
+    fields = ['title', 'content', 'featured_image']
     template_name = 'post_create.html'
     success_url = reverse_lazy('post_list')
 
@@ -105,6 +105,10 @@ class PostEdit(UpdateView):
     template_name = 'post_edit.html'
     success_url = reverse_lazy('post_list')
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         messages.success(self.request, 'You edited Your Book Review')
@@ -116,6 +120,10 @@ class PostDelete(DeleteView):
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_list') 
     success_message = "You have successfully deleted the post"
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)

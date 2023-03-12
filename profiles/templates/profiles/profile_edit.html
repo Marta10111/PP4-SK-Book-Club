@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <!-- <div class="row"> -->
+            <div class="col-md-6 mt-3 offset-md-3">
+                <hr>
+                <h1>Edit Profile</h1>
+                <hr>
+                <h2>{{ user.username|title }}'s Profile</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.as_p }}
+                    {% csrf_token %} 
+                    <input type="submit" value="Update Profile" class="btn btn-lg btn-outline-dark">
+                </form>
+            </div>
+        <!-- </div> -->
+    </div>
+{% endblock %}
