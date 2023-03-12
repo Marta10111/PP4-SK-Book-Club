@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://res.cloudinary.com/dzjocfnqw/image/upload/v1678628686/pexels-zachary-debottis-2953863_kdhjba.jpg);
+    background-color: #777a80
 }
 
 p {
@@ -18,11 +18,11 @@ h5 {
 
 .navbar {
     background-color: #042960;
-    color: rgb(150, 4, 4);
+    color: white;
 }
 
 .navbar-brand {
-    color: rgb(114, 4, 4);
+    color: white;
     font-family: 'Cedarville Cursive', cursive;
 }
 
@@ -51,7 +51,7 @@ a.nav-link.active {
 .hero-image {
     width: 100%;
     height: 50vh;
-    background: url(https://res.cloudinary.com/dzjocfnqw/image/upload/v1678628686/pexels-zachary-debottis-2953863_kdhjba.jpg);
+    background: url('https://res.cloudinary.com/dionnecloud/image/upload/v1661170547/hero-location_ojkgyn.webp');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

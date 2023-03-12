@@ -6,7 +6,7 @@ class UserProfileForm(forms.ModelForm):
 
     profile_image = forms.FileField(label='Image')
     favourite_place = forms.CharField(
-                                    label='Favourite Book:',
+                                    
                                     required=False,
                                     max_length=300)
 
@@ -14,5 +14,5 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = (
             'profile_image',
-            'favourite_book'
+            
         )

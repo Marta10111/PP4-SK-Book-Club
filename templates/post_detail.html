@@ -3,19 +3,17 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-
 <div class="masthead">
     <div class="container-fluid">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="post-title">{{ post.title }}</h1>
-                <h3 class="post-title">{{ post.location }}</h3>
                 <p class="post-subtitle"><span class="posting-name">{{ post.author }}</span> | {{ post.created_on|date }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in post.featured_image.url %}
-                <img class="detail-img" src="{% static 'images/stock.jpg' %}"
-                    alt="Image of clifftop overlooking the sea">
+                <img class="detail-img" src="{% static 'images/it.jpg' %}"
+                    alt="Image of IT book cover">
                 {% else %}
                 <img class="detail-img" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
                 {% endif %}

@@ -1,28 +1,18 @@
 {% extends "base.html" %} 
-
 {% load static %}
-
 {% block content %} 
 
-<div class="container-fluid hero-container">
-    <div class="row hero overlay hero-image img-fluid">
-        <div class="col-12 hero-text text-center">
-            <h1>Stephen King Books</h1>
-            <p>Share your favourite S.King books</p>
-            <p>Find new books</p>
-        </div>
+<section>
+    <h1 class="text-center">Are You a fan of horror and fantasy books?</h1>
+    <div class="text-center">
+        <h3>If so, WELCOME to Stephen King Book Club, where you can share your favourite books writen by 
+        The King of horror.</h3>
+        <p>This site has been created to share informations about his books.</p>
+        <p>Are you looking for ideas of new book to read? You can view posts left by other users.</p>
+        <p>When logged in you can read the detailed posts, leave comments and like other user's posts.</p>
+        <p>Logged in users can also create, edit and delete their own posts.</p>
+        <p>The site admin has the right to remove posts and comments that are not in keeping with the sites ethos!</p>
     </div>
+</section>           
 
-    <section>
-        <h2 class="text-center">Books!</h2>
-        <div class="text-center">
-            <h3>Welcome to Stephen King Book Club, where you can share your favourite books of the author.</h3>
-            <p>This site has been created to share information about horror and fantasy stories.</p>
-            <p>Are you looking for ideas of a new book to read? You can view review posts left by other users.</p>
-            <p>When logged in you can read the detailed posts, leave comments and like other user's posts.</p>
-            <p>The site admin has the right to remove posts and comments that are not in keeping with the sites ethos!</p>
-            <a class="btn btn-lg btn-outline-dark" href="{% url 'post_list' %}" role="button">View Posts</a>
-        </div>
-    </section>       
-
-{% endblock %}
+{%endblock%}
