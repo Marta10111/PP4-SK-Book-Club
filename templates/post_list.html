@@ -1,5 +1,5 @@
 {% extends "base.html" %} 
-
+{% load static %}
 {% block content %} 
 
 <div class="container-fluid">
@@ -15,7 +15,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %} 
                                 <img class="card-img-top"
-                                    src="/static/images/pennywise.jpg" alt="Image of Pennywise from the IT book">
+                                    src="{% static 'images/pennywise.jpg' %}" alt="Image of Pennywise from the IT book">
                                 {% else %} 
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="{{post.title}}">
                                 {% endif %} 
